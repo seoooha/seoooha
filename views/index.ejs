@@ -1,0 +1,57 @@
+<%- include('head')%>
+</head>
+<body class="color1">
+<div class="container index">
+  <div class="indexBox">
+    <div class="title" id="title">YEVENGERS PORTFOLIO</div>
+    <ul class="memberList" id="memberList">
+      <li class="JE Maker_clickOn" onclick="MakersClick(this,'JE','Web Designer')">
+        <img src="./image/JE.png" />
+        <div class="text_box">
+          <div class="duties">Web Designer</div>
+          <div class="nameBox">
+            <div class="name">강지은</div>
+            <button type="button" class="more">More</button>
+          </div>
+        </div>
+        
+      </li><!--
+      --><li class="YJ Maker_clickOn" onclick="MakersClick(this,'YJ','Front end Developer')">
+        <img src="./image/YJ.png" />
+        <div class="text_box">
+          <div class="duties">Front end Developer</div>
+          <div class="nameBox">
+            <div class="name">손예준</div>
+            <button type="button" class="more">More</button>
+          </div>
+        </div>
+        
+      </li><!--
+      --><li class="SH Maker_clickOn" onclick="MakersClick(this,'SH','Back end Developer')" id="SH">
+        <img src="./image/SH.png" />
+        <div class="text_box">
+          <div class="duties">Back end Developer</div>
+          <div class="nameBox">
+            <div class="name">강서하</div>
+            <button type="button" class="more">More</button>
+          </div>
+        </div>
+        
+      </li><!--
+      --><li class="markerInfo" id="SHInfo">
+        <%- include('Info/sh')%>
+      </li><!--
+      --><li class="markerInfo" id="JEInfo">
+        <%- include('Info/je')%>
+      </li><!--
+      --><li class="markerInfo" id="YJInfo">
+        <%- include('Info/yj')%>
+      </li>
+    </ul>
+  </div>
+  <a href="/listView" id="allView">전체보기</a>
+</div>
+</body>
+<script src="/js/index.js"></script>
+<%- include('footer')%>
+

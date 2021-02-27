@@ -1,0 +1,24 @@
+@font-face{
+  font-family: 'NanumBarunGothic';
+  src: url("../font/NanumBarunGothic.woff");
+  font-weight: normal;
+  font-style: normal;
+}/*NanumBarunGothic*/
+@font-face{
+  font-family: 'Cafe24Ohsquare';
+  src: url("../font/Cafe24Ohsquare.woff");
+  font-weight: normal;
+  font-style: normal;
+}/*Cafe24Ohsquare*/
+@font-face{
+  font-family: 'Cafe24Simplehae';
+  src: url("../font/Cafe24Simplehae.woff");
+  font-weight: normal;
+  font-style: normal;
+}/*Cafe24Simplehae*/
+@font-face{
+  font-family: 'Cafe24Shiningstar';
+  src: url("../font/Cafe24Shiningstar.woff");
+  font-weight: normal;
+  font-style: normal;
+}/*Cafe24Shiningstar*/

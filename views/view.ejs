@@ -1,0 +1,105 @@
+<%- include('head')%>
+</head>
+<body id="body" class="color1">
+<div class="container containview">
+    <%- include('header')%>
+    
+    <div class="detailView">
+        <div class="detailHeader">
+            <h2 class="title" id="title"><%- data.title%></h2>
+            <div class="bottomBox">
+                <div class="left">
+                    <div class="user" id="name"><%- data.name%></div>
+                    <div class="day" id="board_date"><%- data.board_date%></div>
+                </div>
+                <div class="right">
+                    <a href="/listView">목록</a>
+                    <button type="button" val="modi" onclick="passwrodCheck(this)">수정</button>
+                    <button type="button" val="del" onclick="passwrodCheck(this)">삭제</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="detailBody" id="contents"><%- data.content%></div>
+        
+        <div class="detailFooter">
+            <ul class="hashTagBox">
+                <li class="hashTag">#디자인</li>
+            </ul>
+
+            <ul class="commentBox" id="commentBox">
+                <% data.comments.forEach(function(list,index) { %>
+                <% let numRandom = Math.random(); %>
+                <% let numRandom2 = Math.floor( numRandom * 5 + 1 ) %>
+                <li class="commentList">
+                    <div class="userLogo">
+                        <img src="./image/userlogo<%- numRandom2 %>.png" alt="유저로고" />
+                    </div>
+                    <div class="textBox">
+                        <div class="userName"><%- list.name%></div>
+                        <div class="writeDay"><%- list.comment_date %></div>
+                        <div class="textContent"><%- list.comment %></div>
+                        <div class="txtareaBox">
+                            <textarea placeholder="여러분의 소중한 댓글을 입력해주세요." style="resize: none;"></textarea>
+                        </div>
+                        <div class="btnbox">
+                            <button type="button" class="button style2 small" onclick="commentModifyCancel('<%- index %>')">수정취소</button>
+                            <button type="button" class="button style1 small" onclick="commentModifySuccess('<%- list._id%>','<%- index %>')">수정완료</button>
+                        </div>
+                    </div>
+                    <div class="btnbox">
+                        <button type="button" val="comment_modi" _id="<%- list._id%>" onclick="passwrodCheck(this,'<%- index %>')">수정</button>
+                        <button type="button" val="comment_del" _id="<%- list._id%>"onclick="passwrodCheck(this)">삭제</button>
+                    </div>
+                </li>
+                <% }) %>
+            </ul>
+
+            <div class="commentWrite">
+                <div class="inputBoxouter ib wd170">
+                    <div class="inputBox ht40">
+                        <input type="text" placeholder="이름" maxlength="5" id="comment_name" />
+                    </div>
+                </div><!--
+                --><div class="inputBoxouter ib wd170">
+                    <div class="inputBox ht40">
+                        <input type="password" placeholder="비밀번호" maxlength="12" id="comment_password"/>
+                    </div>
+                </div>
+                <div class="txtareaBox">
+                    <textarea name="" id="comment_content" placeholder="여러분의 소중한 댓글을 입력해주세요."style="resize: none;"></textarea>
+                </div>
+
+                <button type="button" class="register button style1 small" id="comment_btn" onclick="commentBtn()">댓글달기</button>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div id="background" class="click"></div>
+
+    <div class="modal" id="PwdCheck" >
+        <button type="button" class="btn_nav on" id="modalCloseBtn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="txt">패스워드를 입력하세요</div>
+
+        <div class="inputBoxouter ">
+            <div class="inputBox ht40">
+                <input type="password" placeholder="비밀번호" maxlength="12" id="passwordCheck"/>
+            </div>
+            <div class="inputError" id="pwdCheckError">비밀번호가 틀렸습니다.</div>
+        </div>
+
+        <button type="button" class="button full style1" id="board_confirm_btn" onclick="board_confirm_btn(this)"></button>
+    </div>
+
+    
+</div>
+</body>
+<script src="/js/view.js"></script>
+<%- include('footer')%>

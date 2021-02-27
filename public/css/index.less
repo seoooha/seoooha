@@ -1,0 +1,322 @@
+.container{
+    position: relative;
+    &.index{
+        min-height: 100vh;
+        &::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+    }
+    @media @tablet{
+        font-size: 14px;
+    }
+}
+
+.side_txt{
+    width: 150px;
+    height: 100vh;
+    background-size: contain;
+    position: absolute;
+    left: 0;
+    top: 0;
+    @media @tablet{
+        opacity: .5;
+    }
+}
+
+.indexBox{
+    padding-bottom: 40px;
+    .title{
+        color: #494a4f;
+        font-family: 'Cafe24Ohsquare';
+        font-size: 1.875em;
+        margin-left: 6em;
+        @media @mobile{
+            margin-left: 0;
+            position: relative;
+        }
+        &::before{
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 90px;
+            margin-right: 1em;
+            background: #494a4f;
+            vertical-align: middle;
+        }
+        &.clickOn{
+            color: #99c4c8;
+            &::before{
+                background: #99c4c8;
+            }
+        }
+    }
+
+    .memberList{
+        display: flex;
+        position: absolute;
+        left: 50%;
+        top: 30%;
+        transform: translateX(-50%);
+        @media @mobile{
+            display: block;
+            position: sticky;
+            transform: none;
+        }
+        > li{
+            display: inline-block;
+            width: 258px;
+            min-width: 180px;
+            img{
+                width: 100%;
+                transition: all .5s ease;
+            }
+            &.Maker_clickOn{
+                cursor: pointer;
+                .text_box{
+                    display: block;
+                }
+                &:hover{
+                    img{
+                        transform: scale(1.2);
+                    }
+                }
+            }
+            &.clickOff{
+                #PdtProcessBtn{
+                    display: block;
+                }
+            }
+            @media @tablet{
+                width: 200px;
+            }
+            @media @mobile{
+                display: block;
+                width: 300px;
+                margin: 0 auto;
+            }
+            & + li{
+                margin-left: 158px;
+                @media @tablet{
+                    margin-left: 100px;
+                }
+                @media @tablet2{
+                    margin-left: 60px;
+                }
+                @media @mobile{
+                    margin-left: auto;
+                    margin-top: 60px;
+                }
+            }
+            
+            .text_box{
+                display: none;
+                font-family: 'Cafe24Simplehae';
+                color: #494a4f;
+                margin-top: 2em;
+                .duties{
+                    font-size: 2.5em;
+                    @media @mobile{
+                        font-size: 2em;
+                    }
+                }
+                .nameBox{
+                    display: flex;
+                    margin-top: 1em;
+                }
+                .name{
+                    font-size: 1.625em;
+                    flex: 1;
+                    align-items: center;
+                    display: flex;
+                }
+                .more{
+                    font-size: 1.5em;
+                    width: 40px;
+                    height: 40px;
+                    justify-content: center;
+                    align-items: center;
+                    display: flex;
+                    background: #494a4f;
+                    border-radius: 50%;
+                    font-family: 'Cafe24Shiningstar';
+                    color: #f2f2f2;
+                }
+            }
+
+            #PdtProcessBtn{
+                display: none;
+                font-family: 'Cafe24Ohsquare';
+                width: 100%;
+                height: 50px;
+                font-size: 1.875em;
+                background: #99c4c8;
+                color: #fff;
+                margin-top: 20px;
+            }
+        }
+
+        &.on {
+            top: 20%;
+            li + li{
+                margin-left: auto;
+            }
+            li + .markerInfo{
+                margin-left: 100px;
+                @media @tablet{
+                    margin-left: auto;
+                    padding: 0 80px 100px;
+                }
+                @media @mobile{
+                    padding: 0 20px;
+                }
+            }
+        }
+
+        .markerInfo{
+            display: none;
+            width: 800px;
+            font-family: 'Cafe24Simplehae';
+            padding-bottom:100px;
+            @media @tablet{
+                width: auto;
+            }
+            > div + div{
+                margin-top: 200px;
+                @media @tablet{
+                    margin-top: 100px;
+                }
+            }
+
+            .informactionTitle{
+                font-family: 'Cafe24Shiningstar';
+                color: #99c4c8;
+                font-size: 2.5em;
+                margin-bottom: .5em;
+            }
+        
+            .mainBox{
+                .makerTitle{
+                    font-size: 2.5em;
+                }
+                .name{
+                    margin-top: 1em;
+                    font-size: 1.625em;
+                }
+            }
+            
+            .infoBox{
+                font-size: 1.25em;
+                min-width: 380px;
+                @media @mobile{
+                    min-width: auto;
+                }
+                li + li{
+                    margin-top: 1.5em;
+                    @media @tablet{
+                        margin-top: 2em;
+                    }
+                }
+                .textLeft{
+                    display: inline-block;
+                    width: 100px;
+                    font-weight: bold;
+                    @media @mobile{
+                        display: block;
+                        width: auto;
+                        margin-bottom: .5em;
+                    }
+                }
+                a:hover{
+                    color: #99c4c8;
+                    text-decoration: underline;
+                }
+            }
+            
+            .skillsBox{
+                li{
+                    width: 500px;
+                    display: flex;
+                    & + li{
+                        margin: 1.5em 0 0;
+                    }
+                    @media @tablet{
+                        width: 100%;
+                    }
+                }
+                .box{
+                    display: flex;
+                    align-items: center;
+                    flex: 1;
+                }
+                .textLeft{
+                    display: flex;
+                    font-size: 10px;
+                    border-radius: 50%;
+                    width: 30px;
+                    height: 30px;
+                    align-items: center;
+                    justify-content: center;
+                    background: #364648;
+                    color: #fff;
+                }
+                .textRight{
+                    font-size: 1.25em;
+                    margin-left: .5em;
+                }
+            }
+
+            .Experience, .Certificate{
+                font-size: 1.25em;
+                li + li{
+                    margin-top: 1em;
+                    @media @tablet{
+                        margin-top: 2em;
+                    }
+                }
+                span{
+                    display: inline-block;
+                }
+                .textLeft{
+                    width: 230px;
+                    @media @tablet{
+                        margin-bottom: .5em;
+                    }
+                }
+                .textRight{
+                    word-break: keep-all;
+                }
+            }
+
+        }
+
+    }
+
+}
+#allView{
+    font-family: 'Cafe24Ohsquare';
+    display: block;
+    width: 180px;
+    border-bottom: 4px solid #364648;
+    position: fixed;
+    right: 0;
+    bottom: 45px;
+    font-size: 1.25em;
+    padding: 4px 0;
+    @media @mobile{
+        float: right;
+        position: initial;
+    }
+    &::after{
+        content: '';
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background: url('../image/view_icon.png')no-repeat 0 0;
+        background-size: cover;
+        vertical-align: middle;
+        margin-left: 10px;
+    }
+}
+

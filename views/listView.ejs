@@ -1,0 +1,60 @@
+<%- include('head')%>
+</head>
+<body class="color1">
+<div class="container listView">
+
+    <div class="visualBox" id="visualBox">
+        <%- include('header')%>
+        
+        <div class="mainVisual"></div>
+        
+        <div class="inputBoxouter">
+            <div class="inputBox icon" >
+                <input type="text" placeholder="검색어를 입력해주세요." id="search" autofocus onkeypress="if( event.keyCode==13 ){search_btn.click()}"/><!--
+                --><button type="button" class="search button2" id="search_btn" onclick="listSearch()"></button>
+            </div>
+        </div>
+
+        <ul class="nav">
+            <li><button>#Design</button></li>
+            <li><button>#Front end</button></li>
+            <li><button>#Back end</button></li>
+            <li><button>#Etc.</button></li>
+        </ul>
+    </div>
+    <% if(data){ %>
+    <ul class="listBox" id="listBox">
+        <% data.forEach(function(list) { %>
+            <% let img = "" %>
+            <% if(list.content.split('<img src=').length >=2){ %>
+                <% let imgs = list.content.split('<img src=')[1] %>
+                <% img = imgs.split('"')[1] %>
+            <% }else{ %>
+                <% img = "./image/mainVisual.jpg" %>
+            <% } %>
+            <% let img_remove = list.content.replace(/<(\/img|img)([^>]*)>/gi,""); %>
+            <li class="list" onclick=link("<%- list._id %>") />
+                <div class="imgBox">
+                    <img src="<%- img %>" alt="Thumbnail" />
+                </div>
+                <div class="txtBox">
+                    <div class="top">
+                        <div class="title"><%- list.title %></div>
+                        <div class="text"><%- img_remove %></div>
+                        <div class="writeDay"><%- list.board_date %></div>
+                    </div>
+                    <div class="bottom">
+                        <span class="person">by. <%- list.name %></span>
+                        <span class="commentLength"><%- list.comments.length  %>개의 댓글</span>
+                    </div>
+                </div>
+            </li>
+        <% }); %>
+    </ul>
+    <% } else {%>
+    <h3>검색결과가 없습니다.</h3>
+    <% } %>
+</div>
+</body>
+<script src="/js/listView.js"></script>
+<%- include('footer')%>

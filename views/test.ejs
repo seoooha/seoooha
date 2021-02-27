@@ -1,0 +1,220 @@
+<%- include('head')%>
+<h1><%= title %></h1>
+    <h1> 글쓰기 // 완료 </h1>
+    <label>board_name</label><input id="board_name"/>
+    <label>board_password</label><input type="password" id="board_password"/>
+    <label>board_title</label><input id="board_title"/>
+    <label>board_content</label><textarea id="board_comment"></textarea>
+    <button id="board_btn">게시글 전송</button>
+
+    <br/><br/><br/>
+
+    <h1> 글 수정/삭제 시 패스워드로 본인확인// 완료</h1>
+    <label>board_confirm_password</label><input type="password" id="board_confirm_password"/>
+    <button id="board_confirm_btn"> 글 본인 확인 전송</button>
+
+    <br/><br/><br/>
+
+    <h1> 글 수정 // 완료 </h1>
+    <label>board_modify_title</label><input id="board_modify_title"/>
+    <label>board_modify_content</label><textarea id="board_modify_content"></textarea>
+    <button id="board_modify_btn">게시글 수정 전송</button>
+
+    <br/><br/><br/>
+
+    <h1> 글 삭제 // 완료 </h1>
+    <button id="board_delete_btn">게시글 삭제 전송</button>
+
+    <br/><br/><br/>
+
+    <h1> 댓글쓰기 // 완료 </h1>
+    <label>comment_name</label><input id="comment_name"/>
+    <label>comment_password</label><input type="password" id="comment_password"/>
+    <label>comment_content</label><textarea id="comment_content"></textarea>
+    <button id="comment_btn">댓글 전송</button>
+
+    <br/><br/><br/>
+
+    <h1> 댓글 수정/삭제 시 패스워드로 본인확인 // 완료</h1>
+    <label>comment_confirm_password</label><input type="password" id="comment_confirm_password"/>
+    <button id="comment_confirm_btn">댓글 본인 확인 전송</button>
+
+    <br/><br/><br/>
+
+    <h1> 댓글수정 // 완료</h1>
+    <label>comment_modify_content</label><textarea id="comment_modify_content"></textarea>
+    <button id="comment_midify_btn">댓글 수정 전송</button>
+
+    <br/><br/><br/>
+
+    <h1> 댓글 삭제 // 완료</h1>
+    <button id="comment_delete_btn">댓글 삭제 전송</button>
+
+    <br/><br/><br/>
+
+    <h1> 글 검색</h1>
+    <label>search_name</label><textarea id="search_name"></textarea>
+    <button id="search_btn">글 검색</button>
+
+
+  <script>
+    document.getElementById('board_btn').onclick = function(){
+      $.ajax({
+        url: '/api/board/save',
+        type: 'POST',
+        data: {
+          name : document.getElementById('board_name').value,
+          password : document.getElementById('board_password').value,
+          title : document.getElementById('board_title').value,
+          content : document.getElementById('board_comment').value,
+        },
+        success: function(data) {
+          console.log(data)
+        },
+        error: function(err){
+          console.log(err)
+        }
+      });
+    }
+
+    document.getElementById('board_delete_btn').onclick = function(){
+      $.ajax({
+        url: '/api/board/remove',
+        type: 'DELETE',
+        data: {
+          board_id : "5f631510ca94b782e34a342e"
+        },
+        success: function(data) {
+          console.log(data)
+        },
+        error: function(err){
+          console.log(err)
+        }
+      });
+    }
+
+    document.getElementById('board_modify_btn').onclick = function(){
+      $.ajax({
+        url: '/api/board/update',
+        type: 'PUT',
+        data: {
+          board_id : "5f631510ca94b782e34a342e",
+          title : document.getElementById('board_modify_title').value,
+          content : document.getElementById('board_modify_content').value,
+        },
+        success: function(data) {
+          console.log(data)
+        },
+        error: function(err){
+          console.log(err)
+        }
+      });
+    }
+
+    document.getElementById('board_confirm_btn').onclick = function(){
+      $.ajax({
+        url: '/api/board/confirm',
+        type: 'POST',
+        data: {
+          board_id : "5f631510ca94b782e34a342e",
+          comment_id : "5f6315acec5adf4d5bb9dd67",
+          password : document.getElementById('board_confirm_password').value,
+        },
+        success: function(data) {
+          console.log(data)
+        },
+        error: function(err){
+          console.log(err)
+        }
+      });
+    }
+
+    document.getElementById('comment_btn').onclick = function(){
+      $.ajax({
+        url: '/api/comment/save',
+        type: 'POST',
+        data: {
+          board_id : "5f631510ca94b782e34a342e",
+          name : document.getElementById('comment_name').value,
+          password : document.getElementById('comment_password').value,
+          content : document.getElementById('comment_content').value,
+        },
+        success: function(data) {
+          console.log(data)
+        },
+        error: function(err){
+          console.log(err)
+        }
+      });
+    }
+
+
+    document.getElementById('comment_confirm_btn').onclick = function(){
+      $.ajax({
+        url: '/api/comment/confirm',
+        type: 'POST',
+        data: {
+          board_id : "5f631510ca94b782e34a342e",
+          comment_id : "5f63153c09974f881717c922",
+          password : document.getElementById('comment_confirm_password').value,
+        },
+        success: function(data) {
+          console.log(data)
+        },
+        error: function(err){
+          console.log(err)
+        }
+      });
+    }
+
+    document.getElementById('comment_midify_btn').onclick = function(){
+      $.ajax({
+        url: '/api/comment/update',
+        type: 'PUT',
+        data: {
+          board_id : "5f631510ca94b782e34a342e",
+          comment_id : "5f63153c09974f881717c922",
+          content : document.getElementById('comment_modify_content').value,
+        },
+        success: function(data) {
+          console.log(data)
+        },
+        error: function(err){
+          console.log(err)
+        }
+      });
+    }
+
+    document.getElementById('comment_delete_btn').onclick = function(){
+      $.ajax({
+        url: '/api/comment/remove',
+        type: 'DELETE',
+        data: {
+          board_id : "5f631510ca94b782e34a342e",
+          comment_id : "5f63153c09974f881717c922",
+        },
+        success: function(data) {
+          console.log(data)
+        },
+        error: function(err){
+          console.log(err)
+        }
+      });
+    }
+
+// 현재 진행 상황
+// 1. 글쓰기-> 파일 선택 시 전부다 비활성회되는 오류 발생
+// 2. 게시글삭제, 댓글 삭제 기능 완성
+//    게시글 수정이 되었을때 수정되는 해당 페이지로 이동되어야 함.
+//    코멘트 수정 되었을 때에는 해당되는 댓글이  input창으로 변경되어야 함.
+// 이거면 될거 같은데? 어제 니가 달려줘서 거의 다끝낫음.. 
+// 오늘 이거만 마무리 되면 내일 내가 완전 마무리하겠음!!
+// 일단 오늘 한거 까지 배포할테니까 내일 지은이한테 말 해줭ㅋㅋ
+// 오늘도 수고해줭 고마워
+
+
+
+</script>
+
+  
+<%- include('footer')%>

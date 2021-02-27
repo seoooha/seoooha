@@ -1,0 +1,98 @@
+@mobile3:   ~"(max-width:375px)";
+@mobile2:   ~"(max-width:560px)";
+@mobile:    ~"(max-width:759px)";
+@tablet2:   ~"(max-width:1000px)";
+@tablet:    ~"(max-width:1279px)";
+@desktop:   ~"(max-width:1439px)";
+
+*{
+    font-family: 'NanumBarunGothic';
+}
+body.color1{
+    background: #f2ece8;
+}
+.button{
+    &.small{
+        width: 170px; height: 40px;
+    }
+    &.full{
+        width: 100%; height: 40px;
+    }
+    &.style1{
+        background: #99c4c8; color: #fff; font-size: 1.25em;
+    }
+    &.style2{
+        border: 1px solid #808080; color: #808080; font-size: 1.25em;
+    }
+    &:active{
+        box-shadow: 0 0 8px rgba(0,0,0,.5) inset;
+    }
+}
+
+.button2{
+    &:active{transform: rotate3d(1, 0, 0, 35deg);}
+}
+
+.inputBoxouter{
+    border-radius: 6px;
+    &.wd170{width: 170px}
+    &.ib{display:inline-block}
+    .inputBox{
+        width: 100%; height: 100%; background: #fff; border: 1px solid #bbb; padding: 0 1.5%; 
+        &.ht40{height: 40px;}
+        input{width: 100%; height: 100%;}
+        &.icon{
+            input{width: calc(100% - 34px);}
+            button{display: inline-block; width: 30px; height: 30px; margin-left: 4px; vertical-align: middle;}
+        }
+    }
+    .inputError{
+        font-size: .75em; color: #f00; display: none; margin-top: 4px;
+    }
+}
+
+.header{
+    position: absolute; left: 0%; top: 0px; width: 100%; z-index: 1;
+    &.on{ background: #fff; border-bottom:1px solid #ccc;}
+    .headerInner{
+        width: 1200px; height: 60px; margin:0 auto; padding: 10px 0px;
+        @media @tablet{ width: 100%; padding: 10px }
+
+        .logo{
+            float: left;
+            a{ color: #494a4f; font-family: 'Cafe24Ohsquare'; font-size: 1.875em; line-height: 40px;}
+        }
+        
+        .writeBtn{
+            float: right; width: 168px; height: 40px; border-radius: 40px; border: 1px solid #494a4f; text-align: center; line-height: 40px; cursor: pointer;
+            &:hover{border: 1px solid #99c4c8; background: #99c4c8; color: #fff;}
+        }
+    }
+}
+
+#background{
+    display: none; width: 100%; height: 100vh; background: rgba(0,0,0,.5); z-index: 2; position: fixed; left: 0%; top: 0%;
+}
+
+.modal{
+    display: none; position: fixed; left: 50%; top: 50%; transform: translate(-50%,-50%); z-index: 3;
+}
+
+.btn_nav {
+    display: table-cell; padding: 10px; vertical-align: middle; position: absolute; right: 4px; top: 4px;
+    span {
+      display: block; width: 20px; height: 2px; background: #000; transition: all 0.5s ease;
+      & + span {   margin-top: 5px; }
+    }
+    &.on span {
+      &:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      &:nth-child(2) {
+        visibility: hidden; opacity: 0;
+      }
+      &:nth-child(3) {
+        transform: translateY(-6px) rotate(-45deg);
+      }
+    }
+  }

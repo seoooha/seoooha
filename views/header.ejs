@@ -1,0 +1,10 @@
+<div class="header <%- title==='YEVENGERS-write' && 'on'%>" id="header">
+    <div class="headerInner">
+        <div class="logo"><a href="/listView">YEVENGERS</a></div>
+        <% if(title === 'YEVENGERS-write' ){ %>
+            <a href="/listview" class="writeBtn button">list 보기</a>
+        <% }else{ %>
+            <a href="/write" class="writeBtn button">Blog 작성</a>
+        <% } %>
+    </div>
+</div>
